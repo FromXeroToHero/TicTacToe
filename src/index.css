@@ -1,13 +1,175 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+@media screen and (max-width: 540px) {
+  html {
+    font-size: 50%;
+  }
+}
+@media screen and (max-width: 430px) {
+  html {
+    font-size: 40%;
+  }
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: azure;
+  position: relative;
+  gap: 1.5rem;
+  background-color: #d6fcff;
+}
+
+.winner-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(1) translate(-50%, -50%);
+  transform-origin: left;
+  padding: 3rem 3rem;
+  font-size: 4rem;
+  color: rgb(0, 140, 227);
+  /* background-color: rgba(255, 255, 255, 0.451); */
+  background-color: rgba(168, 221, 253, 0.774);
+  border-radius: 1rem;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 2rem rgba(255, 255, 255, 0.51);
+  animation: popup 0.5s ease-in-out;
+  text-align: center;
+}
+
+@keyframes popup {
+  0% {
+    transform: scale(0) translate(-50%, -50%);
+  }
+  75% {
+    transform: scale(1.2) translate(-50%, -50%);
+  }
+  100% {
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
+
+.close-popup {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background-color: transparent;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  height: 50rem;
+  width: 50rem;
+}
+
+.box {
+  background-color: transparent;
+  border: 3px solid lightskyblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7rem;
+  color: rgb(15, 161, 252);
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+.box:nth-child(1),
+.box:nth-child(4),
+.box:nth-child(7) {
+  border-left: none;
+}
+.box:nth-child(3),
+.box:nth-child(6),
+.box:nth-child(9) {
+  border-right: none;
+}
+.box:nth-child(1),
+.box:nth-child(2),
+.box:nth-child(3) {
+  border-top: none;
+}
+.box:nth-child(7),
+.box:nth-child(8),
+.box:nth-child(9) {
+  border-bottom: none;
+}
+
+.box:hover {
+  /* background-color: rgb(130, 203, 248); */
+  background-color: rgba(135, 206, 250, 0.164);
+}
+
+.animated {
+  animation: textIn 0.3s ease-in;
+}
+
+@keyframes textIn {
+  0% {
+    font-size: 0;
+  }
+  75% {
+    font-size: 8rem;
+  }
+  100% {
+    font-size: 7rem;
+  }
+}
+
+.btn {
+  padding: 1.5rem 2rem;
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+  border: none;
+  background-color: rgb(15, 161, 252);
+  cursor: pointer;
+  border-radius: 1rem;
+  transition: background-color 0.25s;
+}
+.btn:hover {
+  background-color: rgb(43, 173, 255);
+}
+
+h1 {
+  color: rgb(15, 161, 252);
+  font-size: 5rem;
+  text-align: center;
+}
+
+.color--o {
+  color: rgb(249, 156, 172);
+}
+.color--x {
+  color: rgb(12, 170, 14);
 }
